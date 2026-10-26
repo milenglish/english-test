@@ -1,380 +1,157 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Шпаргалка по временам английского языка</title>
-  <style>
-    :root {
-      --bg: #f5f3f0;
-      --card: #ffffff;
-      --ink: #2b2023;
-      --mute: #7a6b6e;
-      --accent: #8b2538;        /* бордовый акцент */
-      --border: #c9b8bc;       /* мягкая бордово‑серая рамка */
-      --tag: #f9f4f5;          /* почти белый для подложек заголовков */
-      --line: #a34d5d;         /* насыщенный бордовый для рамок */
-      --hover: #e9e0e2;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #1e181b;
-        --card: #2a2228;
-        --ink: #e8e0e5;
-        --mute: #a99a9e;
-        --accent: #d46a7e;
-        --border: #5e4a4e;
-        --tag: #3a2f33;
-        --line: #b05a6b;
-        --hover: #3e3036;
-      }
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font: 16px/1.55 "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
-      padding: 24px 16px 60px;
-    }
-
-    main {
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    h1 {
-      font-size: 1.9rem;
-      margin: 0 0 6px;
-      color: var(--ink);
-    }
-
-    .lead {
-      color: var(--mute);
-      margin: 0 0 20px;
-    }
-
-    .legend {
-      background: var(--tag);
-      border: 2px solid var(--border);
-      padding: 10px 14px;
-      font-size: .92rem;
-      margin-bottom: 28px;
-      border-radius: 6px;
-    }
-
-    section {
-      margin-bottom: 34px;
-    }
-
-    h2 {
-      display: inline-block;
-      background: var(--tag);
-      border: 2px solid var(--line);
-      padding: 4px 16px;
-      margin: 0 0 -2px 18px;
-      font-size: 1.05rem;
-      position: relative;
-      z-index: 1;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .box {
-      background: var(--card);
-      border: 2px solid var(--border);
-      padding: 6px 18px 10px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-    }
-
-    details {
-      border-bottom: 1px dashed var(--border);
-      padding: 8px 0;
-    }
-
-    details:last-child {
-      border-bottom: 0;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 1.05rem;
-      padding: 4px 0;
-      color: var(--ink);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    summary span {
-      font-weight: 400;
-      color: var(--mute);
-    }
-
-    summary:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 4px;
-    }
-
-    .body {
-      padding: 4px 0 6px;
-    }
-
-    h4 {
-      margin: 12px 0 4px;
-      font-size: .95rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    ul {
-      margin: 0;
-      padding-left: 20px;
-    }
-
-    li {
-      margin: 2px 0;
-    }
-
-    .f {
-      font-family: Consolas, "Courier New", monospace;
-      background: var(--tag);
-      padding: 3px 8px;
-      display: inline-block;
-      margin: 2px 0;
-      font-size: .93rem;
-      border-radius: 4px;
-      border: 1px solid var(--border);
-      color: var(--ink);
-    }
-
-    .m {
-      color: var(--mute);
-      font-size: .93rem;
-      margin: 8px 0 0;
-    }
-
-    em {
-      color: var(--mute);
-      font-style: normal;
-    }
-
-    .tools {
-      margin-bottom: 16px;
-    }
-
-    button {
-      font: inherit;
-      background: var(--card);
-      color: var(--ink);
-      border: 2px solid var(--border);
-      padding: 5px 12px;
-      cursor: pointer;
-      margin-right: 6px;
-      border-radius: 6px;
-      transition: all 0.2s ease;
-    }
-
-    button:hover {
-      background: var(--hover);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      background: var(--card);
-      font-size: .95rem;
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    td, th {
-      border: 1px solid var(--border);
-      padding: 10px 12px;
-      text-align: left;
-    }
-
-    th {
-      background: var(--tag);
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .wrap {
-      overflow-x: auto;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-
-    @media print {
-      details .body { display: block; }
-      body { background: #fff; }
-      .box, table { box-shadow: none; border: 1px solid #ccc; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Шпаргалка по временам английского языка</title>
+<style>
+:root{--bg:#e9e4d6;--card:#fffdf7;--ink:#26302a;--mute:#5d685f;--green:#8da384;--dk:#3f5a47;--tag:#dfe8d8;--line:#26302a}
+@media (prefers-color-scheme:dark){:root{--bg:#1d241f;--card:#273029;--ink:#eef1e8;--mute:#a9b4a9;--green:#6f8a73;--dk:#b9d3b6;--tag:#34433a;--line:#8da384}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Trebuchet MS","Segoe UI",system-ui,sans-serif;padding:24px 16px 60px}
+main{max-width:860px;margin:0 auto}
+h1{font-size:1.9rem;margin:0 0 6px}
+.lead{color:var(--mute);margin:0 0 20px}
+.legend{background:var(--card);border:2px solid var(--line);padding:10px 14px;font-size:.92rem;margin-bottom:28px}
+section{margin-bottom:34px}
+h2{display:inline-block;background:var(--tag);border:2px solid var(--line);padding:4px 16px;margin:0 0 -2px 18px;font-size:1.05rem;position:relative;z-index:1}
+.box{background:var(--card);border:2px solid var(--line);padding:6px 18px 10px}
+details{border-bottom:1px dashed var(--green);padding:8px 0}
+details:last-child{border-bottom:0}
+summary{cursor:pointer;font-weight:700;font-size:1.05rem;padding:4px 0}
+summary span{font-weight:400;color:var(--mute)}
+summary:focus-visible{outline:3px solid var(--green);outline-offset:2px}
+.body{padding:4px 0 6px}
+h4{margin:12px 0 4px;font-size:.95rem;color:var(--dk)}
+ul{margin:0;padding-left:20px}
+li{margin:2px 0}
+.f{font-family:Consolas,"Courier New",monospace;background:var(--tag);padding:3px 8px;display:inline-block;margin:2px 0;font-size:.93rem;border-radius:3px}
+.m{color:var(--mute);font-size:.93rem;margin:8px 0 0}
+em{color:var(--mute);font-style:normal}
+.tools{margin-bottom:16px}
+button{font:inherit;background:var(--card);color:var(--ink);border:2px solid var(--line);padding:5px 12px;cursor:pointer;margin-right:6px}
+button:hover{background:var(--tag)}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:.95rem}
+td,th{border:2px solid var(--line);padding:6px 10px;text-align:left}
+th{background:var(--tag)}
+.wrap{overflow-x:auto}
+@media print{details .body{display:block}body{background:#fff}}
+</style>
 </head>
 <body>
-  <main>
-    <h1>Шпаргалка по временам английского языка</h1>
-    <p class="lead">Формулы, правила использования, слова‑маркеры и примеры. Нажимайте на название времени, чтобы раскрыть карточку.</p>
+<main>
+<h1>Шпаргалка по временам английского языка</h1>
+<p class="lead">Формулы, правила использования, слова-маркеры и примеры. Нажимайте на название времени, чтобы раскрыть карточку.</p>
+<div class="legend"><b>S</b> — подлежащее · <b>V1</b> — начальная форма глагола · <b>V2</b> — прошедшая форма · <b>V3</b> — причастие II (3-я форма) · <b>Ving</b> — глагол с -ing</div>
+<div class="tools"><button id="open">Раскрыть всё</button><button id="close">Свернуть всё</button></div>
+<div id="app"></div>
 
-    <div class="legend">
-      <b>S</b> — подлежащее · <b>V1</b> — начальная форма глагола · <b>V2</b> — прошедшая форма · <b>V3</b> — причастие II (3‑я форма) · <b>Ving</b> — глагол с -ing
-    </div>
+<section>
+<h2>Как выбрать время</h2>
+<div class="box wrap"><table>
+<tr><th>Ситуация</th><th>Время</th></tr>
+<tr><td>Привычка, факт, расписание</td><td>Present Simple</td></tr>
+<tr><td>Происходит сейчас или временно</td><td>Present Continuous</td></tr>
+<tr><td>Результат важен сейчас, опыт</td><td>Present Perfect</td></tr>
+<tr><td>Длится до сих пор, виден процесс</td><td>Present Perfect Continuous</td></tr>
+<tr><td>Закончилось, названо время в прошлом</td><td>Past Simple</td></tr>
+<tr><td>Процесс в момент в прошлом</td><td>Past Continuous</td></tr>
+<tr><td>Раньше другого прошлого действия</td><td>Past Perfect</td></tr>
+<tr><td>Решение сейчас, предсказание, обещание</td><td>Future Simple</td></tr>
+<tr><td>План или договорённость</td><td>be going to / Present Continuous</td></tr>
+<tr><td>Будущее с точки зрения прошлого</td><td>Future-in-the-Past (would)</td></tr>
+<tr><td>Исполнитель неважен или неизвестен</td><td>Passive Voice</td></tr>
+</table></div>
+</section>
+</main>
 
-    <div class="tools">
-      <button id="open">Раскрыть всё</button>
-      <button id="close">Свернуть всё</button>
-    </div>
-
-    <div id="app"></div>
-
-    <section>
-      <h2>Как выбрать время</h2>
-      <div class="box wrap">
-        <table>
-          <tr>
-            <th>Ситуация</th>
-            <th>Время</th>
-          </tr>
-          <tr>
-            <td>Привычка, факт, расписание</td>
-            <td>Present Simple</td>
-          </tr>
-          <tr>
-            <td>Происходит сейчас или временно</td>
-            <td>Present Continuous</td>
-          </tr>
-          <tr>
-            <td>Результат важен сейчас, опыт</td>
-            <td>Present Perfect</td>
-          </tr>
-          <tr>
-            <td>Длится до сих пор, виден процесс</td>
-            <td>Present Perfect Continuous</td>
-          </tr>
-          <tr>
-            <td>Закончилось, названо время в прошлом</td>
-            <td>Past Simple</td>
-          </tr>
-          <tr>
-            <td>Процесс в момент в прошлом</td>
-            <td>Past Continuous</td>
-          </tr>
-          <tr>
-            <td>Раньше другого прошлого действия</td>
-            <td>Past Perfect</td>
-          </tr>
-          <tr>
-            <td>Решение сейчас, предсказание, обещание</td>
-            <td>Future Simple</td>
-          </tr>
-          <tr>
-            <td>План или договорённость</td>
-            <td>be going to / Present Continuous</td>
-          </tr>
-          <tr>
-            <td>Будущее с точки зрения прошлого</td>
-            <td>Future-in-the-Past (would)</td>
-          </tr>
-          <tr>
-            <td>Исполнитель неважен или неизвестен</td>
-            <td>Passive Voice</td>
-          </tr>
-        </table>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    const D = [
-      {
-        g: "Настоящее время",
-        items: [
-          {
-            n: "Present Simple",
-            r: "настоящее простое",
-            f: ["+ S + V1 (he/she/it: V+s/es)", "− S + don't / doesn't + V1", "? Do / Does + S + V1?"],
-            u: ["Регулярные действия, привычки, рутина", "Факты и общеизвестные истины", "Расписания (поезда, фильмы, уроки)"],
-            m: "always, usually, often, sometimes, never, every day, on Mondays",
-            e: ["She works in a bank. — Она работает в банке.", "I don't drink coffee in the evening. — Я не пью кофе вечером.", "Does he play tennis? — Он играет в теннис?"],
-            note: "После -s, -sh, -ch, -x, -o добавляем -es (watch → watches); согласная + y → -ies (study → studies)."
-          },
-          {
-            n: "Present Continuous",
-            r: "настоящее длительное",
-            f: ["+ S + am / is / are + Ving", "− S + am / is / are + not + Ving", "? Am / Is / Are + S + Ving?"],
-            u: ["Действие происходит прямо сейчас", "Временная ситуация в этот период", "Запланированное ближайшее будущее", "Раздражающие повторения (с always)"],
-            m: "now, at the moment, today, currently, these days, Look!, Listen!",
-            e: ["I am reading a book now. — Я сейчас читаю книгу.", "They are staying at a hotel this week. — Они живут в отеле на этой неделе.", "He is always losing his keys! — Он вечно теряет ключи!"],
-            note: "Глаголы состояния (know, love, want, understand) обычно в Continuous не используются."
-          },
-          {
-            n: "Present Perfect",
-            r: "настоящее совершённое",
-            f: ["+ S + have / has + V3", "− S + have / has + not + V3", "? Have / Has + S + V3?"],
-            u: ["Результат действия важен сейчас", "Жизненный опыт («был ли когда-нибудь…»)", "Действие началось в прошлом и связано с настоящим (for / since)", "Недавно завершённое действие"],
-            m: "already, yet, just, ever, never, recently, so far, for, since, today, this week",
-            e: ["I have lost my keys. — Я потерял ключи (и их нет).", "She has never been to Paris. — Она никогда не была в Париже.", "They have lived here since 2020. — Они живут здесь с 2020 года."],
-            note: "Нельзя с конкретным временем в прошлом (yesterday, in 2019, ago) — там нужен Past Simple."
-          },
-          {
-            n: "Present Perfect Continuous",
-            r: "настоящее совершённое длительное",
-            f: ["+ S + have / has been + Ving", "− S + have / has + not been + Ving", "? Have / Has + S + been + Ving?"],
-            u: ["Действие началось в прошлом и продолжается до сих пор (важна длительность)", "Действие только что закончилось, виден результат или следы"],
-            m: "for, since, all day, how long, lately, recently",
-            e: ["I have been learning English for three years. — Я учу английский три года.", "It has been raining all day. — Дождь идёт весь день.", "I have been working in the garden. — Я работал в саду (руки грязные)."],
-            note: "I have read this book — прочитал (результат). I have been reading this book — читаю уже какое-то время (процесс)."
-          }
-        ]
-      },
-      {
-        g: "Прошедшее время",
-        items: [
-          {
-            n: "Past Simple",
-            r: "прошедшее простое",
-            f: ["+ S + V2 (правильные: V+ed)", "− S + didn't + V1", "? Did + S + V1?"],
-            u: ["Законченное действие в прошлом", "Последовательность событий в рассказе", "Прошлые привычки и факты"],
-            m: "yesterday, last week, ago, in 2015, when, then",
-            e: ["I visited my grandma yesterday. — Вчера я навестил бабушку.", "She didn't call me last night. — Она не звонила мне вчера вечером.", "Did you see that film? — Ты смотрел тот фильм?"],
-            note: "В отрицании и вопросе глагол возвращается в V1: did you go, а не did you went."
-          },
-          {
-            n: "Past Continuous",
-            r: "прошедшее длительное",
-            f: ["+ S + was / were + Ving", "− S + was / were + not + Ving", "? Was / Were + S + Ving?"],
-            u: ["Процесс в конкретный момент в прошлом", "Длительное действие, которое прервало другое (Past Simple)", "Два параллельных действия (while)", "Фон, описание обстановки"],
-            m: "while, when, at 5 o'clock yesterday, all day, at that moment",
-            e: ["At 8 p.m. I was cooking dinner. — В 8 вечера я готовил ужин.", "I was walking home when it started to rain. — Я шёл домой, когда начался дождь.", "While she was reading, he was watching TV. — Пока она читала, он смотрел ТВ."]
-          },
-          {
-            n: "Past Perfect",
-            r: "прошедшее совершённое",
-            f: ["+ S + had + V3", "− S + had + not + V3", "? Had + S + V3?"],
-            u: ["Действие произошло раньше другого действия в прошлом", "Действие завершилось до определённого момента в прошлом", "Косвенная речь и условные предложения 3-го типа"],
-            m: "before, after, by the time, already, just, never, by 5 o'clock",
-            e: ["When I arrived, the film had already started. — Когда я пришёл, фильм уже начался.", "She said she had never been abroad. — Она сказала, что никогда не была за границей.", "After he had finished work, he went home. — Закончив работу, он пошёл домой."]
-          }
-        ]
-      },
-      {
-        g: "Будущее время",
-        items: [
-          {
-            n: "Future Simple",
-            r: "будущее простое",
-            f: ["+ S + will + V1", "− S + won't + V1", "? Will + S + V1?"],
-            u: ["Спонтанное решение в момент речи", "Предсказания (I think, probably)", "Обещания, предложения, просьбы, угрозы"],
-            m: "tomorrow, next week, soon, in 2030, I think, probably, perhaps",
-            e: ["I'm thirsty. I will get some water. — Хочу пить, принесу воды.", "I think
+<script>
+const D=[
+{g:"Настоящее время",items:[
+{n:"Present Simple",r:"настоящее простое",
+ f:["+ S + V1 (he/she/it: V+s/es)","− S + don't / doesn't + V1","? Do / Does + S + V1?"],
+ u:["Регулярные действия, привычки, рутина","Факты и общеизвестные истины","Расписания (поезда, фильмы, уроки)"],
+ m:"always, usually, often, sometimes, never, every day, on Mondays",
+ e:["She works in a bank. — Она работает в банке.","I don't drink coffee in the evening. — Я не пью кофе вечером.","Does he play tennis? — Он играет в теннис?"],
+ note:"После -s, -sh, -ch, -x, -o добавляем -es (watch → watches); согласная + y → -ies (study → studies)."},
+{n:"Present Continuous",r:"настоящее длительное",
+ f:["+ S + am / is / are + Ving","− S + am / is / are + not + Ving","? Am / Is / Are + S + Ving?"],
+ u:["Действие происходит прямо сейчас","Временная ситуация в этот период","Запланированное ближайшее будущее","Раздражающие повторения (с always)"],
+ m:"now, at the moment, today, currently, these days, Look!, Listen!",
+ e:["I am reading a book now. — Я сейчас читаю книгу.","They are staying at a hotel this week. — Они живут в отеле на этой неделе.","He is always losing his keys! — Он вечно теряет ключи!"],
+ note:"Глаголы состояния (know, love, want, understand) обычно в Continuous не используются."},
+{n:"Present Perfect",r:"настоящее совершённое",
+ f:["+ S + have / has + V3","− S + have / has + not + V3","? Have / Has + S + V3?"],
+ u:["Результат действия важен сейчас","Жизненный опыт («был ли когда-нибудь…»)","Действие началось в прошлом и связано с настоящим (for / since)","Недавно завершённое действие"],
+ m:"already, yet, just, ever, never, recently, so far, for, since, today, this week",
+ e:["I have lost my keys. — Я потерял ключи (и их нет).","She has never been to Paris. — Она никогда не была в Париже.","They have lived here since 2020. — Они живут здесь с 2020 года."],
+ note:"Нельзя с конкретным временем в прошлом (yesterday, in 2019, ago) — там нужен Past Simple."},
+{n:"Present Perfect Continuous",r:"настоящее совершённое длительное",
+ f:["+ S + have / has been + Ving","− S + have / has + not been + Ving","? Have / Has + S + been + Ving?"],
+ u:["Действие началось в прошлом и продолжается до сих пор (важна длительность)","Действие только что закончилось, виден результат или следы"],
+ m:"for, since, all day, how long, lately, recently",
+ e:["I have been learning English for three years. — Я учу английский три года.","It has been raining all day. — Дождь идёт весь день.","I have been working in the garden. — Я работал в саду (руки грязные)."],
+ note:"I have read this book — прочитал (результат). I have been reading this book — читаю уже какое-то время (процесс)."}]},
+{g:"Прошедшее время",items:[
+{n:"Past Simple",r:"прошедшее простое",
+ f:["+ S + V2 (правильные: V+ed)","− S + didn't + V1","? Did + S + V1?"],
+ u:["Законченное действие в прошлом","Последовательность событий в рассказе","Прошлые привычки и факты"],
+ m:"yesterday, last week, ago, in 2015, when, then",
+ e:["I visited my grandma yesterday. — Вчера я навестил бабушку.","She didn't call me last night. — Она не звонила мне вчера вечером.","Did you see that film? — Ты смотрел тот фильм?"],
+ note:"В отрицании и вопросе глагол возвращается в V1: did you go, а не did you went."},
+{n:"Past Continuous",r:"прошедшее длительное",
+ f:["+ S + was / were + Ving","− S + was / were + not + Ving","? Was / Were + S + Ving?"],
+ u:["Процесс в конкретный момент в прошлом","Длительное действие, которое прервало другое (Past Simple)","Два параллельных действия (while)","Фон, описание обстановки"],
+ m:"while, when, at 5 o'clock yesterday, all day, at that moment",
+ e:["At 8 p.m. I was cooking dinner. — В 8 вечера я готовил ужин.","I was walking home when it started to rain. — Я шёл домой, когда начался дождь.","While she was reading, he was watching TV. — Пока она читала, он смотрел ТВ."]},
+{n:"Past Perfect",r:"прошедшее совершённое",
+ f:["+ S + had + V3","− S + had + not + V3","? Had + S + V3?"],
+ u:["Действие произошло раньше другого действия в прошлом","Действие завершилось до определённого момента в прошлом","Косвенная речь и условные предложения 3-го типа"],
+ m:"before, after, by the time, already, just, never, by 5 o'clock",
+ e:["When I arrived, the film had already started. — Когда я пришёл, фильм уже начался.","She said she had never been abroad. — Она сказала, что никогда не была за границей.","After he had finished work, he went home. — Закончив работу, он пошёл домой."]}]},
+{g:"Будущее время",items:[
+{n:"Future Simple",r:"будущее простое",
+ f:["+ S + will + V1","− S + won't + V1","? Will + S + V1?"],
+ u:["Спонтанное решение в момент речи","Предсказания (I think, probably)","Обещания, предложения, просьбы, угрозы"],
+ m:"tomorrow, next week, soon, in 2030, I think, probably, perhaps",
+ e:["I'm thirsty. I will get some water. — Хочу пить, принесу воды.","I think it will rain tomorrow. — Думаю, завтра будет дождь.","I won't tell anyone, I promise. — Я никому не скажу, обещаю."],
+ note:"После if / when / before / as soon as будущее не ставим — используем Present Simple: If it rains, we will stay home."},
+{n:"Конструкция «to be going to» и Present Continuous",r:"для будущего",
+ f:["be going to: S + am / is / are + going to + V1","Present Continuous: S + am / is / are + Ving + время в будущем"],
+ u:["be going to — заранее принятые планы и намерения; прогноз по видимым признакам","Present Continuous — уже согласованные договорённости с точным временем (встречи, билеты)"],
+ m:"tomorrow, next year, on Friday, tonight, Look at…!",
+ e:["I am going to learn Spanish next year. — Я собираюсь учить испанский в следующем году.","Look at those clouds! It is going to rain. — Смотри на тучи! Будет дождь.","We are flying to Rome on Friday. — Мы летим в Рим в пятницу (билеты куплены)."],
+ note:"will — решение принято только сейчас; going to — решение принято заранее."},
+{n:"Future-in-the-Past",r:"будущее в прошедшем",
+ f:["+ S + would + V1","− S + wouldn't + V1","? Would + S + V1?","Также: S + was / were going to + V1"],
+ u:["Будущее по отношению к моменту в прошлом","Косвенная речь и придаточные, когда главная часть в прошедшем времени"],
+ m:"said that, thought that, knew that, promised that",
+ e:["He said he would call me later. — Он сказал, что позвонит позже.","I knew she wouldn't forget. — Я знал, что она не забудет.","They were going to buy a house, but changed their minds. — Они собирались купить дом, но передумали."],
+ note:"I think he will come → I thought he would come."}]},
+{g:"Пассивный залог",items:[
+{n:"Present Simple Passive",r:"",
+ f:["+ S + am / is / are + V3","− S + am / is / are + not + V3","? Am / Is / Are + S + V3?"],
+ u:["Регулярные действия, факты, процессы (производство, правила)","Важно действие, а не исполнитель (исполнитель вводится через by)"],
+ m:"every day, usually, always, in Germany",
+ e:["English is spoken all over the world. — На английском говорят по всему миру.","These cars are made in Germany. — Эти машины делают в Германии.","Is the office cleaned every day? — В офисе убирают каждый день?"]},
+{n:"Past Simple Passive",r:"",
+ f:["+ S + was / were + V3","− S + was / were + not + V3","? Was / Were + S + V3?"],
+ u:["Законченное действие в прошлом, когда важен результат или объект"],
+ m:"yesterday, last night, in 1990, ago",
+ e:["The Statue of Liberty was given to the USA by France. — Статую Свободы подарила США Франция.","The windows were broken last night. — Окна разбили прошлой ночью.","When was this book written? — Когда была написана эта книга?"]},
+{n:"Present Perfect Passive",r:"",
+ f:["+ S + have / has been + V3","− S + have / has + not been + V3","? Have / Has + S + been + V3?"],
+ u:["Результат актуален сейчас","Недавние события, связанные с настоящим"],
+ m:"already, yet, just, recently, so far",
+ e:["The report has been finished. — Отчёт закончен.","My phone has been stolen! — Мой телефон украли!","Have the tickets been booked yet? — Билеты уже забронированы?"]}]}
+];
+const app=document.getElementById('app');
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+app.innerHTML=D.map(s=>`<section><h2>${esc(s.g)}</h2><div class="box">`+s.items.map(t=>`<details><summary>${esc(t.n)} ${t.r?`<span>(${esc(t.r)})</span>`:''}</summary><div class="body"><h4>Формулы</h4>${t.f.map(x=>`<div><span class="f">${esc(x)}</span></div>`).join('')}<h4>Когда используем</h4><ul>${t.u.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p class="m"><b>Маркеры:</b> ${esc(t.m)}</p><h4>Примеры</h4><ul>${t.e.map(x=>{const i=x.indexOf(' — ');return `<li>${esc(x.slice(0,i))} <em>— ${esc(x.slice(i+3))}</em></li>`}).join('')}</ul>${t.note?`<p class="m"><b>Важно:</b> ${esc(t.note)}</p>`:''}</div></details>`).join('')+`</div></section>`).join('');
+const all=o=>document.querySelectorAll('details').forEach(d=>d.open=o);
+document.getElementById('open').onclick=()=>all(true);
+document.getElementById('close').onclick=()=>all(false);
+window.addEventListener('beforeprint',()=>all(true));
+</script>
+</body>
+</html>
