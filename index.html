@@ -2,362 +2,255 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ОГЭ Английский: Грамматика</title>
+    <title>Personality Adjectives Practice</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFE0E2, #FFF9C4, #E8F5E9);
+            margin: 0;
             padding: 20px;
-            background-color: #f4f6f9;
             color: #333;
         }
         h1 {
             text-align: center;
-            color: #2c3e50;
+            color: #FF5252;
+            text-shadow: 2px 2px 0 #FFE082;
+            font-size: 2.5rem;
         }
-        .info-box {
-            background: #fff;
-            border-left: 5px solid #3498db;
-            padding: 15px;
+        .task-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
             margin-bottom: 25px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border-left: 8px solid #4CAF50;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        th, td {
-            border: 1px solid #dddddd;
-            padding: 12px;
-            text-align: left;
-            vertical-align: middle;
-        }
-        th {
-            background-color: #3498db;
-            color: white;
-        }
-        .input-cell {
-            padding: 5px;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 2px solid #bdc3c7;
-            border-radius: 4px;
-            font-size: 16px;
-            font-family: monospace;
-            text-transform: uppercase;
-        }
-        input[type="text"]:focus {
-            border-color: #3498db;
-            outline: none;
-        }
-        .result-icon {
-            font-size: 1.5em;
+        .task-title {
+            color: #2E7D32;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
             font-weight: bold;
-            display: none;
-            margin-left: 10px;
-            vertical-align: middle;
         }
-        .correct {
-            color: #2ecc71;
+        .word-tag {
+            display: inline-block;
+            background-color: #FFE0B2;
+            color: #D84315;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: 600;
+            border: 1px solid #FFCC80;
         }
-        .incorrect {
-            color: #e74c3c;
+        .input-box {
+            border: 2px dashed #2196F3;
+            padding: 10px;
+            min-height: 40px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background-color: #E3F2FD;
         }
-        .check-btn {
-            display: block;
-            width: 100%;
-            max-width: 400px;
-            margin: 30px auto;
-            padding: 15px;
-            background-color: #3498db;
+        .match-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #F5F5F5;
+            border-radius: 8px;
+        }
+        button {
+            background-color: #FF5722;
             color: white;
             border: none;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 25px;
             cursor: pointer;
-            font-size: 18px;
             font-weight: bold;
-            transition: background 0.3s;
+            transition: transform 0.2s;
         }
-        .check-btn:hover {
-            background-color: #2980b9;
+        button:hover {
+            transform: scale(1.05);
+            background-color: #E64A19;
         }
-        .score-display {
-            text-align: center;
-            font-size: 22px;
-            margin-top: 20px;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 5px;
+        .emoji-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
         }
-        .bg-good {
-            background-color: #d4edda;
-            color: #155724;
+        .emoji-item {
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 5px;
         }
-        .bg-bad {
-            background-color: #f8d7da;
-            color: #721c24;
+        .emoji-item:hover {
+            background-color: #FFE0B2;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
 
-    <h1>ОГЭ Английский: Грамматика (Строгий режим)</h1>
+    <h1>🎯 Personality Adjectives Practice 🎯</h1>
 
-    <div class="info-box">
-        <strong>⚠️ Важно: формат записи в бланк ОГЭ</strong><br><br>
-        В бланке нельзя использовать апострофы и пробелы. Все формы пишутся слитно заглавными буквами.<br><br>
-        <span style="color: #e74c3c;">❌ Неправильно:</span> CAN'T, DID NOT, WAS NOT<br>
-        <span style="color: #2ecc71;">✅ Правильно:</span> <strong>COULDNOT</strong>, <strong>DIDNOT</strong>, <strong>WASNOT</strong>
+    <!-- Task 1: Match Emoji to Adjective -->
+    <div class="task-card">
+        <div class="task-title">1. Match the Emoji to the Adjective 😊🤫🗣️</div>
+        <p>Draw a line from the word to the emoji that best describes it:</p>
+        <div class="match-row">
+            <span class="word-tag">bossy</span>
+            <div class="emoji-grid">
+                <span class="emoji-item">🦁</span>
+                <span class="emoji-item">🧘</span>
+                <span class="emoji-item">🗣️</span>
+            </div>
+        </div>
+        <div class="match-row">
+            <span class="word-tag">quiet</span>
+            <div class="emoji-grid">
+                <span class="emoji-item">🤫</span>
+                <span class="emoji-item">🎉</span>
+                <span class="emoji-item">🐌</span>
+            </div>
+        </div>
+        <div class="match-row">
+            <span class="word-tag">loud</span>
+            <div class="emoji-grid">
+                <span class="emoji-item">🔊</span>
+                <span class="emoji-item">🤫</span>
+                <span class="emoji-item">🦉</span>
+            </div>
+        </div>
+        <div class="match-row">
+            <span class="word-tag">messy</span>
+            <div class="emoji-grid">
+                <span class="emoji-item">🗑️</span>
+                <span class="emoji-item">🧹</span>
+                <span class="emoji-item">🧼</span>
+            </div>
+        </div>
+        <div class="match-row">
+            <span class="word-tag">tidy</span>
+            <div class="emoji-grid">
+                <span class="emoji-item">✨</span>
+                <span class="emoji-item">🧹</span>
+                <span class="emoji-item">📦</span>
+            </div>
+        </div>
+        <div class="match-row">
+            <span class="word-tag">patient</span>
+            <div class="emoji-grid">
+                <span class="emoji-item">🧘</span>
+                <span class="emoji-item">🏃</span>
+                <span class="emoji-item">😡</span>
+            </div>
+        </div>
+        <div class="match-row">
+            <span class="word-tag">easy-going</span>
+            <div class="emoji-grid">
+                <span class="emoji-item">😎</span>
+                <span class="emoji-item">😤</span>
+                <span class="emoji-item">😨</span>
+            </div>
+        </div>
+        <div class="match-row">
+            <span class="word-tag">organised</span>
+            <div class="emoji-grid">
+                <span class="emoji-item">🗂️</span>
+                <span class="emoji-item">📉</span>
+                <span class="emoji-item">🌪️</span>
+            </div>
+        </div>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 65%;">Предложение с пропуском</th>
-                <th style="width: 10%;">Исходный глагол</th>
-                <th style="width: 25%;">Ваш ответ (ОГЭ формат)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>"Happy birthday, Annie!" Brain said and got an old oil lamp out of his bag. Annie _ hide her surprise: "What's this? And where did you buy it?"</td>
-                <td>NOT CAN</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="COULDNOT" oninput="clearResult(this)">
-                    <span class="result-icon" id="res1">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>As soon as she _ it, the doorbell rang impatiently.</td>
-                <td>SAY</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="SAID" oninput="clearResult(this)">
-                    <span class="result-icon" id="res2">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>"Come in. Today's not a day for long walks, or long waits," I looked out the window. It _ hard and it was windy.</td>
-                <td>SNOW</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WASSNOWING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res3">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>Dad usually comes up with original ideas. Last Sunday Dad _ that we should all go on a camping trip.</td>
-                <td>DECIDE</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="DECIDED" oninput="clearResult(this)">
-                    <span class="result-icon" id="res4">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>When Dr. James _ slowly to work, he saw an accident.</td>
-                <td>DRIVE</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WASDRIVING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res5">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>Ten minutes later we made another unpleasant discovery: we _ the tent which meant we couldn't stay overnight and we had to drive all the way back home again.</td>
-                <td>NOT HAVE</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="DIDNOTHAVE" oninput="clearResult(this)">
-                    <span class="result-icon" id="res6">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>According to our family legend, it _ hard at the moment when I was born. Since that time, rainy days have always been my luckiest.</td>
-                <td>RAIN</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WASRAINING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res7">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>We _ tired and disappointed with the trip.</td>
-                <td>BE</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WERE" oninput="clearResult(this)">
-                    <span class="result-icon" id="res8">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>Liz _ sandwiches when Carlos came into the kitchen.</td>
-                <td>MAKE</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WASMAKING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res9">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>I _ for my party when the earthquake hit. My first thought was that everybody was going to die.</td>
-                <td>PREPARE</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WASPREPARING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res10">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>A few years ago I was on a camping holiday in Bristol. There _ lots of other girls from around the UK, but I was the only one from Scotland.</td>
-                <td>BE</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WERE" oninput="clearResult(this)">
-                    <span class="result-icon" id="res11">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>_ how to react. My neighbour repeated her question. I nodded, "Yes."</td>
-                <td>NOT KNOW</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="DIDNOTKNOW" oninput="clearResult(this)">
-                    <span class="result-icon" id="res12">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>I thought for a moment and said: "I want a Paddington Bear." My dad _ his suitcase but he looked up at me at once when he heard that.</td>
-                <td>PACK</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WASPACKING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res13">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>One day, Cindy returned from the park very excited. "Guess, who I met in the park!" she said, and she told her parents the whole story. "I _ along the central avenue when I saw a group of people."</td>
-                <td>WALK</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WASWALKING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res14">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>_ out that some people believe silly stereotypes about Scotland.</td>
-                <td>FIND</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="FOUND" oninput="clearResult(this)">
-                    <span class="result-icon" id="res15">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>One day, when Judy _ something in her room, her mother came in holding a big shopping bag.</td>
-                <td>DRAW</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WASDRAWING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res16">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>One day she didn't knock. When I caught up with her at the bus stop, she _ a magazine and didn't even look at me.</td>
-                <td>READ</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WASREADING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res17">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>Her plans _ ambitious. Anna wanted to buy a professional digital camera and it wasn't easy to save enough money.</td>
-                <td>BE</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WERE" oninput="clearResult(this)">
-                    <span class="result-icon" id="res18">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>But Anna _ wait so long, she needed it right then.</td>
-                <td>NOT CAN</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="COULDNOT" oninput="clearResult(this)">
-                    <span class="result-icon" id="res19">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>When Vicki arrived, Mary _ a menu for the party.</td>
-                <td>DESIGN</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WASDESIGNING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res20">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>When he came into the room, his mum and two other women _ happily and didn't notice him.</td>
-                <td>CHAT</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WERECHATTING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res21">✓</span>
-                </td>
-            </tr>
-            <tr>
-                <td>His classmates _ something in their notepads and didn't pay any attention to him.</td>
-                <td>WRITE</td>
-                <td class="input-cell">
-                    <input type="text" data-correct="WEREWRITING" oninput="clearResult(this)">
-                    <span class="result-icon" id="res22">✓</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Task 2: Fill in the Blanks -->
+    <div class="task-card">
+        <div class="task-title">2. Fill in the Blanks 📝</div>
+        <p>Choose a word from the box to complete the sentences:</p>
+        <div style="margin-bottom: 15px;">
+            <span class="word-tag">bossy</span>
+            <span class="word-tag">easy-going</span>
+            <span class="word-tag">loud</span>
+            <span class="word-tag">messy</span>
+            <span class="word-tag">organised</span>
+            <span class="word-tag">patient</span>
+            <span class="word-tag">quiet</span>
+            <span class="word-tag">tidy</span>
+        </div>
+        <ol>
+            <li>My friend never gets angry. He is very __________. <div class="input-box"></div></li>
+            <li>The classroom is a disaster! It is so __________. <div class="input-box"></div></li>
+            <li>She always tells everyone what to do. She is a bit __________. <div class="input-box"></div></li>
+            <li>The library is a __________ place. You must be silent. <div class="input-box"></div></li>
+            <li>He can wait for hours without complaining. He is very __________. <div class="input-box"></div></li>
+            <li>The music is too __________. Please turn it down! <div class="input-box"></div></li>
+            <li>She keeps her desk perfect. She is very __________. <div class="input-box"></div></li>
+            <li>He knows where everything is. He is very __________. <div class="input-box"></div></li>
+        </ol>
+    </div>
 
-    <button class="check-btn" onclick="checkAnswers()">Проверить ответы (строгий режим)</button>
-    <div class="score-display" id="score"></div>
+    <!-- Task 3: True or False -->
+    <div class="task-card">
+        <div class="task-title">3. True or False? ✅❌</div>
+        <p>Read the sentence. Is it a good description of the word? Click True or False.</p>
+        <div class="match-row" style="justify-content: space-between;">
+            <span>"Tidy" means your room is clean and in order.</span>
+            <div>
+                <button>True</button>
+                <button>False</button>
+            </div>
+        </div>
+        <div class="match-row" style="justify-content: space-between;">
+            <span>"Messy" means you are very calm and relaxed.</span>
+            <div>
+                <button>True</button>
+                <button>False</button>
+            </div>
+        </div>
+        <div class="match-row" style="justify-content: space-between;">
+            <span>"Bossy" means you like to give orders to others.</span>
+            <div>
+                <button>True</button>
+                <button>False</button>
+            </div>
+        </div>
+        <div class="match-row" style="justify-content: space-between;">
+            <span>"Organised" means you lose things all the time.</span>
+            <div>
+                <button>True</button>
+                <button>False</button>
+            </div>
+        </div>
+    </div>
 
-    <script>
-        function clearResult(element) {
-            const parent = element.parentElement;
-            const icon = parent.querySelector('.result-icon');
-            if (icon) {
-                icon.style.display = 'none';
-                parent.style.borderColor = '#bdc3c7';
-            }
-        }
+    <!-- Task 4: Create a Character -->
+    <div class="task-card">
+        <div class="task-title">4. Create a Character 🦸‍♂️🎨</div>
+        <p>Imagine a superhero! Use at least 3 adjectives from the list to describe them. Write a short sentence below:</p>
+        <div class="input-box" contenteditable="true" style="min-height: 80px;">
+            My superhero is...
+        </div>
+        <p><strong>Tip:</strong> Use words like <span class="word-tag">strong</span>, <span class="word-tag">brave</span> (extra) or from our list!</p>
+    </div>
 
-        function checkAnswers() {
-            const inputs = document.querySelectorAll('input[type="text"]');
-            let correctCount = 0;
-            const totalCount = inputs.length;
+    <!-- Task 5: Sorting Game -->
+    <div class="task-card">
+        <div class="task-title">5. Sort the Words 🗂️</div>
+        <p>Drag the words into the correct column: Positive (+) or Negative (-)</p>
+        <div style="display: flex; gap: 20px; margin-top: 15px;">
+            <div style="flex: 1;">
+                <h3 style="color: #2E7D32;">Positive (+)</h3>
+                <div class="input-box" style="min-height: 150px;"></div>
+            </div>
+            <div style="flex: 1;">
+                <h3 style="color: #D32F2F;">Negative (-)</h3>
+                <div class="input-box" style="min-height: 150px;"></div>
+            </div>
+        </div>
+        <div style="margin-top: 15px; text-align: center;">
+            <button>Shuffle Words</button>
+        </div>
+    </div>
 
-            inputs.forEach((input, index) => {
-                const correctAnswer = input.getAttribute('data-correct').toUpperCase();
-                let userAnswer = input.value.trim().toUpperCase();
-
-                const icon = input.parentElement.querySelector('.result-icon');
-                const parentCell = input.parentElement;
-
-                if (userAnswer === correctAnswer) {
-                    icon.classList.add('correct');
-                    icon.classList.remove('incorrect');
-                    icon.textContent = '✓';
-                    icon.style.display = 'inline';
-                    parentCell.style.borderColor = 'green';
-                    correctCount++;
-                } else {
-                    icon.classList.add('incorrect');
-                    icon.classList.remove('correct');
-                    icon.textContent = '✗';
-                    icon.style.display = 'inline';
-                    parentCell.style.borderColor = 'red';
-                }
-            });
-
-            const scoreDisplay = document.getElementById('score');
-            scoreDisplay.textContent = `Результат: ${correctCount} из ${totalCount} заданий выполнено верно.`;
-
-            if (correctCount === totalCount) {
-                scoreDisplay.style.color = 'green';
-                scoreDisplay.className = 'score-display bg-good';
-                scoreDisplay.textContent += " Отлично! Все верно! 🎉";
-            } else {
-                scoreDisplay.style.color = 'red';
-                scoreDisplay.className = 'score-display bg-bad';
-                scoreDisplay.textContent += " Есть ошибки, проверь написание! 🧐";
-            }
-        }
-    </script>
 </body>
 </html>
