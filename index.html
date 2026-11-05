@@ -202,7 +202,7 @@ window.OGE_VARIANTS = [
 
 
   var $=function(id){return document.getElementById(id)}, player=$('player'), stage=$('stage'), foot=$('foot');
-  var stream=null, recorder=null, chunks=[], recordError='', recordingDone=null, recordingResolve=null;
+  var stream=null, recorder=null, chunks=[], recordError='', recordingDone=null, recordingResolve=null, stoppingRecording=false;
   var steps=[], current=-1, timer=null, generation=0, running=false, finishing=false, studentName='', downloadUrl=null;
   var answerCount=0, recordedAnswers=new Set(), starting=false, exitPending=false, stageEnd=0, cuePending=false;
   var variants=window.OGE_VARIANTS||[{id:1}], activeVariant=variants[0], completed={};
@@ -228,15 +228,17 @@ window.OGE_VARIANTS = [
   function recordAnswer(){
     if(!stream||recordError)return;
     try{
+      if(!stream.getTracks().some(function(t){return t.readyState!=='ended'}))throw new Error('Microphone ended');
       if(!recorder){
         chunks=[];
-        var mime=['audio/webm;codecs=opus','audio/mp4','audio/ogg;codecs=opus'].find(function(t){return MediaRecorder.isTypeSupported(t)});
-        recorder=mime?new MediaRecorder(stream,{mimeType:mime,audioBitsPerSecond:64000}):new MediaRecorder(stream);
+        // Use the same browser-selected encoding as the successful microphone test.
+        var r=new MediaRecorder(stream), parts=chunks;recorder=r;
         recordingDone=new Promise(function(resolve){recordingResolve=resolve});
-        recorder.ondataavailable=function(e){if(e.data.size)chunks.push(e.data)};
-        recorder.onstop=function(){recordingResolve(new Blob(chunks,{type:recorder.mimeType||'audio/webm'}))};
-        recorder.onerror=function(){recordError='Запись прервалась. Доступную часть можно скачать в конце.'; $('log').textContent=recordError};
-        recorder.start(1000);
+        var resolveRecording=recordingResolve, actualType='';
+        r.ondataavailable=function(e){if(e.data.size){parts.push(e.data);if(e.data.type)actualType=e.data.type}};
+        r.onstop=function(){resolveRecording(new Blob(parts,{type:actualType||r.mimeType||'application/octet-stream'}))};
+        r.onerror=function(){recordError='Запись прервалась. Доступную часть можно скачать в конце.'; $('log').textContent=recordError;indicator()};
+        r.start();
       }else if(recorder.state==='paused')recorder.resume();
       if(!recordedAnswers.has(current)){recordedAnswers.add(current);answerCount++}
     }catch(e){recordError='Не удалось начать запись. Проверьте доступ к микрофону.'; $('log').textContent=recordError}
@@ -244,7 +246,15 @@ window.OGE_VARIANTS = [
   }
   async function endRecording(){
     if(!recorder)return null;
-    if(recorder.state!=='inactive')recorder.stop();
+    if(!stoppingRecording){
+      stoppingRecording=true;
+      var r=recorder;
+      // Wait for the encoder to resume before requesting the final data.
+      if(r.state==='paused'){
+        r.onresume=function(){r.onresume=null;if(r.state!=='inactive')r.stop()};
+        try{r.resume()}catch(e){r.onresume=null;if(r.state!=='inactive')r.stop()}
+      }else if(r.state!=='inactive')r.stop();
+    }
     var blob=await recordingDone;releaseMic();indicator();return blob;
   }
   function cancelStage(){generation++;cuePending=false;clearInterval(timer);timer=null;player.onended=null;player.onerror=null;player.pause();pauseRecording()}
@@ -332,7 +342,7 @@ window.OGE_VARIANTS = [
       $('result').innerHTML='<div class="download-card"><div><strong>Все ответы — в одном файле</strong><p>'+answerCount+' из 8 ответов записано · '+(blob.size/1024/1024).toFixed(1)+' МБ · '+ext.toUpperCase()+'</p></div><a class="primary-link" id="download">↓ Скачать запись</a></div><p class="download-note">Скачивание начнётся автоматически. Если браузер его заблокирует, нажмите «Скачать запись».</p><audio id="review" controls aria-label="Прослушать все ответы"></audio>';
       $('download').href=downloadUrl;$('download').download=filename;$('review').src=downloadUrl;$('download').click();
       if(recordError){var warning=document.createElement('p');warning.textContent=recordError;$('result').appendChild(warning)}
-    }else $('result').textContent=recordError||'Запись отсутствует: тренировка проходила без микрофона или без записанных ответов.';
+    }else $('result').textContent=recordError||(answerCount?'Браузер не сохранил звук, хотя запись была запущена. Попробуйте записать короткий ответ ещё раз.':'Запись отсутствует: тренировка проходила без микрофона или без записанных ответов.');
     var restart=document.createElement('button');restart.className='alt';restart.textContent='Попробовать ещё раз';restart.onclick=function(){return startSession()};
     var menu=document.createElement('button');menu.textContent='В меню';menu.onclick=closeExam;foot.append(restart,menu);
     finishing=false;running=false;
@@ -350,7 +360,7 @@ window.OGE_VARIANTS = [
   }
   function beginSession(){
     if(downloadUrl){URL.revokeObjectURL(downloadUrl);downloadUrl=null}
-    recorder=null;chunks=[];recordError='';recordingDone=null;answerCount=0;recordedAnswers.clear();$('log').textContent='';
+    recorder=null;chunks=[];recordError='';recordingDone=null;stoppingRecording=false;answerCount=0;recordedAnswers.clear();$('log').textContent='';
     running=true;buildSteps();$('home').hidden=true;$('exam').hidden=false;history.replaceState(null,'','#variant-'+activeVariant.id);go(0);
   }
   async function closeExam(e){
@@ -376,7 +386,7 @@ window.OGE_VARIANTS = [
   }
   function askLeave(){return new Promise(function(resolve){$('leave-dialog').hidden=false;$('stay').focus();function finish(value){$('leave-dialog').hidden=true;resolve(value);if(!value)$('menu').focus()}$('stay').onclick=function(){finish(false)};$('leave-confirm').onclick=function(){finish(true)}})}
   function stopPreview(){clearTimeout(previewTimer);previewTimer=null;if(previewRecorder&&previewRecorder.state!=='inactive')previewRecorder.stop()}
-  function cleanPreview(){stopPreview();if(previewStream){previewStream.getTracks().forEach(function(t){t.stop()});previewStream=null}if(previewUrl){URL.revokeObjectURL(previewUrl);previewUrl=null}$('mic-playback').pause();$('mic-playback').removeAttribute('src')}
+  function cleanPreview(){stopPreview();previewStream=null;if(previewUrl){URL.revokeObjectURL(previewUrl);previewUrl=null}$('mic-playback').pause();$('mic-playback').removeAttribute('src')}
   async function openMicCheck(){
     starting=true;previewReady=false;$('mic-record').hidden=false;$('mic-dialog').hidden=false;$('mic-status').textContent='Разрешите доступ к микрофону в браузере.';$('mic-record').textContent='Сделать пробную запись микрофона';$('mic-record').disabled=true;$('mic-begin').disabled=true;$('mic-begin').textContent='Пропустить проверку и начать';$('mic-playback').hidden=true;$('mic-begin').textContent='Пропустить проверку и начать';$('mic-cancel').focus();
     try{await microphone();if(!$('mic-dialog').hidden){$('mic-status').textContent='Запишите короткую фразу и послушайте себя. Пробная запись длится до 5 секунд и не попадёт в ответы.';$('mic-record').disabled=false;$('mic-begin').disabled=false}else releaseMic()}
@@ -388,10 +398,10 @@ window.OGE_VARIANTS = [
     if(!stream)return;
     $('mic-begin').disabled=true;$('mic-playback').hidden=true;
     try{
-      cleanPreview();previewStream=stream.clone();var parts=[], r=new MediaRecorder(previewStream);previewRecorder=r;
+      cleanPreview();previewStream=stream;var parts=[], r=new MediaRecorder(previewStream);previewRecorder=r;
       r.ondataavailable=function(e){if(e.data.size)parts.push(e.data)};
       var ownStream=previewStream;
-      r.onstop=function(){ownStream.getTracks().forEach(function(t){t.stop()});if(previewStream===ownStream)previewStream=null;if($('mic-dialog').hidden||previewRecorder!==r)return;previewReady=parts.length>0;$('mic-record').textContent='Записать ещё раз';$('mic-begin').disabled=false;if(previewReady){previewUrl=URL.createObjectURL(new Blob(parts,{type:r.mimeType}));$('mic-playback').src=previewUrl;$('mic-playback').hidden=false;$('mic-status').textContent='Прослушайте запись. Хорошо ли слышен ваш голос?';$('mic-begin').textContent='Всё слышно — начать тренировку';}else $('mic-status').textContent='Не удалось записать звук. Попробуйте ещё раз.'};
+      r.onstop=function(){if(previewStream===ownStream)previewStream=null;if($('mic-dialog').hidden||previewRecorder!==r)return;previewReady=parts.length>0;$('mic-record').textContent='Записать ещё раз';$('mic-begin').disabled=false;if(previewReady){previewUrl=URL.createObjectURL(new Blob(parts,{type:r.mimeType}));$('mic-playback').src=previewUrl;$('mic-playback').hidden=false;$('mic-status').textContent='Прослушайте запись. Хорошо ли слышен ваш голос?';$('mic-begin').textContent='Всё слышно — начать тренировку';}else $('mic-status').textContent='Не удалось записать звук. Попробуйте ещё раз.'};
       r.onerror=function(){stopPreview();$('mic-status').textContent='Не удалось сделать пробную запись. Попробуйте ещё раз.'};
       r.start();$('mic-record').textContent='Остановить запись';$('mic-status').textContent='Идёт пробная запись — скажите короткую фразу. Через 5 секунд запись остановится.';previewTimer=setTimeout(stopPreview,5000);
     }catch(e){cleanPreview();$('mic-begin').disabled=false;$('mic-status').textContent='Не удалось сделать пробную запись. Попробуйте ещё раз.'}
@@ -405,6 +415,7 @@ window.OGE_VARIANTS = [
   document.addEventListener('keydown',function(e){var dialog=!$('leave-dialog').hidden?$('leave-dialog'):!$('mic-dialog').hidden?$('mic-dialog'):null;if(!dialog)return;if(e.key==='Escape'){e.preventDefault();if(dialog===$('leave-dialog'))$('stay').click();else $('mic-cancel').click()}if(e.key==='Tab'){var focusable=Array.from(dialog.querySelectorAll('button,audio')).filter(function(el){return !el.disabled&&!el.hidden}),first=focusable[0],last=focusable[focusable.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
   window.addEventListener('beforeunload',function(e){if(running){e.preventDefault();e.returnValue=''}});
 })();
+
 
 
 
